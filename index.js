@@ -79,39 +79,30 @@
 // minimal value of 3 + 2 + 1 + 4 + 7 = 17.
 
 function getMinimumUniqueSum(arr){
-let len = arr.length
-let array = arr
+let len = arr.length;
+let array = arr;
 let num = 1; 
 let uniqueArr = []; 
+let sum = 0;
 for (let i=0; i<len; i++){
-    console.log(array[i])
-    console.log(array)
     if(uniqueArr.indexOf(array[i]) === -1){
-        uniqueArr.push(array[i])
+        uniqueArr.push(array[i]);
+        sum += array[i];
     }
     else {
-        for(let j=num; j<=len; j++){
-            if(uniqueArr.indexOf(num) === -1){
-                uniqueArr.push(num)
-                return;
-            }
-            else {
-                num ++
-            }
+        while (uniqueArr.indexOf(num) !== -1){
+            num ++;
         }
-        
+        uniqueArr.push(num);
+        sum += num;
     }
 }
-console.log("This is the unique array", uniqueArr)
-console.log(getSum(uniqueArr))
+console.log(sum);
 }
 
-function getSum(arr){
-    let sum = 0
-    for(let i=0; i<arr.length; i++){
-        sum += arr[i];
-    }
-    return sum
-}
 
-getMinimumUniqueSum([3,2,1,2,7])
+getMinimumUniqueSum([3,2,1,2,7]) // retuns 17 as expected
+getMinimumUniqueSum([2,2,2,2,2]) // returns 15 as expected
+getMinimumUniqueSum([1,1,1,1,1]) // returns 15 as expected
+getMinimumUniqueSum([10,9,8,8,8]) // returns 30 as expected
+
