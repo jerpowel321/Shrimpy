@@ -1,78 +1,78 @@
-// // A function that defines a node 
-// function Node(data) {
-//     this.data = data
-//     this.left = null
-//     this.right = null
-//     // A function that inserts a node as a child 
-//     this.addChild = function(child) {
-//         if (child.data >= this.data){
-//             this.right = child
-//         }
-//         else {
-//             this.left = child
-//         }
-//     }
-// }
+// A function that defines a node 
+function Node(data) {
+    this.data = data
+    this.left = null
+    this.right = null
+    // A function that inserts a node as a child 
+    this.addChild = function(child) {
+        if (child.data >= this.data){
+            this.right = child
+        }
+        else {
+            this.left = child
+        }
+    }
+}
 
-// // A function that must return 1 if the data is present in the BST, or 0 if it's not
-// function isPresent(root, val){
-//     // If the root doesn't exist, the `val` we are searching for is not in the BST: return 0
-//     if (root === null) {
-//         return 0;
-//     }
-//     // If the data of the node is equal to the `val` we are searching for: return 1
-//     if (root.data === val){
-//         return 1;
-//     } 
-//     // If the root data is greater than or equal to the `val` we are searching for, pass the left node child and the search `val` into the isPresent function recursively
-//     if (root.data >= val){
-//         return isPresent(root.left, val);
-//     } 
-//     // If the root data is less than the `val` we are searching for, pass the right node child and the search `val` into the isPresent function recursively
-//     if (root.data < val){
-//         return isPresent(root.right, val);
-//     }
-// }
+// A function that must return 1 if the data is present in the BST, or 0 if it's not
+function isPresent(root, val){
+    // If the root doesn't exist, the `val` we are searching for is not in the BST: return 0
+    if (root === null) {
+        return 0;
+    }
+    // If the data of the node is equal to the `val` we are searching for: return 1
+    if (root.data === val){
+        return 1;
+    } 
+    // If the root data is greater than or equal to the `val` we are searching for, pass the left node child and the search `val` into the isPresent function recursively
+    if (root.data >= val){
+        return isPresent(root.left, val);
+    } 
+    // If the root data is less than the `val` we are searching for, pass the right node child and the search `val` into the isPresent function recursively
+    if (root.data < val){
+        return isPresent(root.right, val);
+    }
+}
 
-// // Create Nodes
-// n10 = new Node(10)
-// n20 = new Node(20)
-// n30 = new Node(30)
-// n40 = new Node(40)
-// n48 = new Node(48)
-// n50 = new Node(50)
-// n60 = new Node(60)
-// n49 = new Node(49)
+// Create Nodes
+n10 = new Node(10)
+n20 = new Node(20)
+n30 = new Node(30)
+n40 = new Node(40)
+n48 = new Node(48)
+n50 = new Node(50)
+n60 = new Node(60)
+n49 = new Node(49)
 
-// // Binary Search Tree
-// //      40
-// //     /  \
-// //   30    50
-// //   /     / \
-// //  20   48   60
-// //  /      \
-// // 10      49
+// Binary Search Tree
+//      40
+//     /  \
+//   30    50
+//   /     / \
+//  20   48   60
+//  /      \
+// 10      49
 
-// // Create Child Node Relationship
-// n40.addChild(n50)
-// n40.addChild(n30)
-// n50.addChild(n60)
-// n50.addChild(n48)
-// n30.addChild(n20)
-// n20.addChild(n10)
-// n48.addChild(n49)
+// Create Child Node Relationship
+n40.addChild(n50)
+n40.addChild(n30)
+n50.addChild(n60)
+n50.addChild(n48)
+n30.addChild(n20)
+n20.addChild(n10)
+n48.addChild(n49)
 
-// // Test Cases
-// // console.log(isPresent(n40, 10)) // returns 1 as expected
-// // console.log(isPresent(n40, 500)) // returns 0 as expected
-// // console.log(isPresent(n40, -500)) // returns 0 as expected
-// // console.log(isPresent(n40, 20)) // returns 1 as expected
-// // console.log(isPresent(n40, 40)) // returns 1 as expected
-// // console.log(isPresent(n40, 50)) // returns 1 as expected
-// // console.log(isPresent(n40, 60)) // returns 1 as expected
-// // console.log(isPresent(n40, 70)) // returns 0 as expected
-// // console.log(isPresent(n40, 48)) // returns 1 as expected
-// // console.log(isPresent(n40, 49)) // returns 1 as expected
+// Test Cases
+console.log(isPresent(n40, 10)) // returns 1 as expected
+console.log(isPresent(n40, 500)) // returns 0 as expected
+console.log(isPresent(n40, -500)) // returns 0 as expected
+console.log(isPresent(n40, 20)) // returns 1 as expected
+console.log(isPresent(n40, 40)) // returns 1 as expected
+console.log(isPresent(n40, 50)) // returns 1 as expected
+console.log(isPresent(n40, 60)) // returns 1 as expected
+console.log(isPresent(n40, 70)) // returns 0 as expected
+console.log(isPresent(n40, 48)) // returns 1 as expected
+console.log(isPresent(n40, 49)) // returns 1 as expected
 
 // For
 // example, if arr = [3, 2, 1, 2, 7], then arr(unique) = [3, 2, 1, 4, 7] and its elements sum to a
@@ -106,3 +106,67 @@ getMinimumUniqueSum([2,2,2,2,2]) // returns 15 as expected
 getMinimumUniqueSum([1,1,1,1,1]) // returns 15 as expected
 getMinimumUniqueSum([10,9,8,8,8]) // returns 30 as expected
 
+function combineDatapoints(data){
+    // Determine the number of lists
+    let numOfLists = data.length
+    // Create a Map to store the time and value data
+    let dataMap = new Map()
+    // Iterate over each list provided
+    for (let i=0; i<numOfLists; i++){
+       // Determine the length of the list
+       let listLength = data[i].length
+       // Iterate through each element in the list
+       for (let j=0; j<listLength; j++) {
+           // Explicitly create variables for time and value  
+           let time = data[i][j]['time']
+           let value = data[i][j]['value']
+           // Check if there is not a value for the given time 
+           if(dataMap.has(time) === false) {
+               // Set the time and value
+               dataMap.set(time, value)
+           }
+           else {
+               // Otherwise sum the values for the time 
+               curVal = dataMap.get(time)
+               newVal = curVal + value
+               dataMap.set(time, newVal)
+           }
+       }
+    }
+    // Create a result array
+    let result = []
+    // Iterate over each key value pair in the map and push into the array
+    dataMap.forEach(function(value, key) {
+        result.push({'time': key, 'value': value})
+    })
+    return result
+}
+
+
+
+data = [
+[{time: 1, value: 10}, {time: 2, value: 5}],
+[{time: 1, value: 7}, {time: 2, value: 3}],
+]
+
+console.log(combineDatapoints(data))
+
+data = [
+[{time: 1, value: 10}, {time: 3, value: 5}],
+[{time: 1, value: 7}, {time: 4, value: 3}],
+]
+
+console.log(combineDatapoints(data))
+data = [
+[{time: 1, value: 10}, {time: 3, value: 5}],
+[{time: 1, value: 7}, {time: 4, value: 3}, {time: 7, value: 9}],
+]
+
+console.log(combineDatapoints(data))
+
+data = [
+    [{time: 1, value: 10}, {time: 1, value: 5}],
+    [{time: 1, value: 7}, {time: 1, value: 3}, {time: 1, value: 9}],
+    ]
+    
+console.log(combineDatapoints(data))
